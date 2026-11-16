@@ -1,0 +1,43 @@
+{
+  "name": "labshop-v1",
+  "target": "http://127.0.0.1:8000",
+  "notes": "Seeded issues in labs/labshop.py. Header coverage is endpoint-agnostic because the crawler picks the first interesting URL.",
+  "findings": [
+    {
+      "check_id": "headers",
+      "min_count": 1,
+      "note": "Any HTML or API response without the baseline security headers."
+    },
+    {
+      "check_id": "cors",
+      "path_contains": "/api/config",
+      "min_count": 1
+    },
+    {
+      "check_id": "open-redirect",
+      "path_contains": "/redirect",
+      "parameter": "next"
+    },
+    {
+      "check_id": "reflected-xss",
+      "path_contains": "/products",
+      "parameter": "category"
+    },
+    {
+      "check_id": "sql-injection",
+      "path_contains": "/search",
+      "parameter": "q"
+    },
+    {
+      "check_id": "authz-object",
+      "path_contains": "/api/orders/",
+      "min_count": 1,
+      "note": "Alice and bob each see one order URL. One successful cross-account read is enough."
+    },
+    {
+      "check_id": "graphql-introspection",
+      "path_contains": "/graphql",
+      "min_count": 1
+    }
+  ]
+}

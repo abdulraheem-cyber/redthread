@@ -1,0 +1,56 @@
+# redthread config. Paths are relative to this file.
+# Run `python -m labs.labshop` first, then `redthread run -c examples/redthread.toml`.
+
+[run]
+name = "labshop"
+output_dir = "../runs"
+authorized = false          # localhost only; set true only for systems you own
+allow_post = true           # needed for form login and GraphQL
+rate_limit = 8.0
+max_requests = 600
+max_runtime_seconds = 300
+workers = 4
+max_baseline_actions = 40
+max_explore_actions = 60
+stagnant_limit = 20
+
+[scope]
+include = ["http://127.0.0.1:8000"]
+exclude = ["/logout", "/admin/delete*"]
+max_depth = 3
+max_pages = 60
+
+[llm]
+# Optional. Without a key the planner still runs, using the check order and
+# past outcomes instead of model suggestions.
+enabled = false
+base_url = "https://api.openai.com/v1"
+model = "gpt-4o-mini"
+api_key = "${OPENAI_API_KEY}"
+max_calls = 20
+
+[checks]
+enabled = []                # empty means all registered checks
+disabled = []
+
+[graph]
+path = ""                   # defaults to graph.sqlite in the run directory
+
+[integrations]
+nmap_enabled = false
+
+[[identities]]
+name = "alice"
+kind = "form"
+login_url = "http://127.0.0.1:8000/login"
+username = "alice"
+password = "alice-pw"       # demo account; use ${ENV_VAR} in real configs
+success_marker = "Signed in as alice"
+
+[[identities]]
+name = "bob"
+kind = "form"
+login_url = "http://127.0.0.1:8000/login"
+username = "bob"
+password = "bob-pw"
+success_marker = "Signed in as bob"
