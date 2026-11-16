@@ -1,0 +1,214 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="100%" height="100%">
+  <defs>
+    <linearGradient id="arch-bg-light" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="50%" stop-color="#F8FAFC" />
+      <stop offset="100%" stop-color="#F1F5F9" />
+    </linearGradient>
+
+    <pattern id="arch-grid-light" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#E2E8F0" />
+    </pattern>
+
+    <filter id="card-shadow" x="-6%" y="-6%" width="112%" height="114%">
+      <feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="#0F172A" flood-opacity="0.05" />
+    </filter>
+
+    <marker id="arrow-gray" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#94A3B8" />
+    </marker>
+    <marker id="arrow-crimson-light" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#E11D48" />
+    </marker>
+    <marker id="arrow-emerald-light" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#059669" />
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="660" rx="12" fill="url(#arch-bg-light)" stroke="#E2E8F0" stroke-width="1.5" />
+  <rect width="1200" height="660" rx="12" fill="url(#arch-grid-light)" />
+
+  <!-- Diagram Title Area -->
+  <g transform="translate(60, 42)">
+    <text x="0" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" letter-spacing="2.5" fill="#BE123C">
+      SYSTEM ARCHITECTURE &amp; PIPELINE FLOW
+    </text>
+    <text x="0" y="28" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="24" font-weight="800" fill="#0F172A">
+      From Target Ingestion to Replay-Validated SARIF
+    </text>
+  </g>
+
+  <!-- COLUMN 1: Inputs & Scope Guard (x=60) -->
+  <g transform="translate(60, 110)">
+    <rect width="210" height="490" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5" filter="url(#card-shadow)" />
+    <path d="M 0 12 Q 0 0 12 0 L 198 0 Q 210 0 210 12 L 210 38 L 0 38 Z" fill="#F8FAFC" />
+    <line x1="0" y1="38" x2="210" y2="38" stroke="#E2E8F0" stroke-width="1" />
+    <text x="16" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#334155">
+      1. SCOPE &amp; BOUNDARIES
+    </text>
+
+    <!-- Item: Config File -->
+    <rect x="15" y="55" width="180" height="62" rx="8" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1" />
+    <text x="26" y="78" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#0F172A">redthread.toml</text>
+    <text x="26" y="98" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#64748B">Seeds, Excludes, Budgets</text>
+
+    <!-- Item: Scope Guard -->
+    <rect x="15" y="130" width="180" height="85" rx="8" fill="#FFF1F2" stroke="#FDA4AF" stroke-width="1.2" />
+    <text x="26" y="152" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#BE123C">Scope Guard</text>
+    <text x="26" y="172" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#4C0519">• run.authorized check</text>
+    <text x="26" y="189" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#4C0519">• Same-origin enforcement</text>
+    <text x="26" y="204" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#9F1239">• URL pattern exclusions</text>
+
+    <!-- Item: Traffic Controls -->
+    <rect x="15" y="230" width="180" height="75" rx="8" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1" />
+    <text x="26" y="252" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#0F172A">Rate &amp; Budget Control</text>
+    <text x="26" y="272" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#64748B">Token bucket rate limiter</text>
+    <text x="26" y="289" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#64748B">Max requests &amp; stop file</text>
+
+    <!-- Item: Identities -->
+    <rect x="15" y="320" width="180" height="150" rx="8" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1" />
+    <text x="26" y="342" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#0F172A">Multi-Identity Engine</text>
+    <text x="26" y="362" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#64748B">• Form Authentication</text>
+    <text x="26" y="380" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#64748B">• HTTP Basic &amp; Bearer</text>
+    <text x="26" y="398" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#64748B">• Custom Headers</text>
+    <text x="26" y="416" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#64748B">• Playwright Headless</text>
+    <text x="26" y="445" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600" fill="#0284C7">Enables BOLA/IDOR Diffing</text>
+  </g>
+
+  <!-- COLUMN 2: Discovery & Knowledge Graph (x=305) -->
+  <g transform="translate(305, 110)">
+    <rect width="260" height="490" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5" filter="url(#card-shadow)" />
+    <path d="M 0 12 Q 0 0 12 0 L 248 0 Q 260 0 260 12 L 260 38 L 0 38 Z" fill="#F8FAFC" />
+    <line x1="0" y1="38" x2="260" y2="38" stroke="#E2E8F0" stroke-width="1" />
+    <text x="16" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#334155">
+      2. DISCOVERY &amp; GRAPH
+    </text>
+
+    <!-- Discovery Parsers -->
+    <rect x="15" y="55" width="230" height="150" rx="8" fill="#F0F9FF" stroke="#BAE6FD" stroke-width="1" />
+    <text x="26" y="78" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#0369A1">Surface Discovery</text>
+    <text x="26" y="102" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#0C4A6E">🌐 HTML crawler (links, forms)</text>
+    <text x="26" y="124" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#0C4A6E">📋 OpenAPI 3.x (JSON/YAML)</text>
+    <text x="26" y="146" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#0C4A6E">🔍 GraphQL introspection</text>
+    <text x="26" y="168" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#0C4A6E">⚡ Nmap service mapper (opt)</text>
+    <text x="26" y="190" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#0284C7">Extracts methods, params &amp; schemas</text>
+
+    <!-- Connective arrow inside col 2 -->
+    <path d="M 130 215 L 130 240" stroke="#94A3B8" stroke-width="1.5" marker-end="url(#arrow-gray)" />
+
+    <!-- SQLite Knowledge Graph -->
+    <rect x="15" y="248" width="230" height="222" rx="8" fill="#EEF2FF" stroke="#C7D2FE" stroke-width="1.3" />
+    <text x="26" y="272" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#4338CA">SQLite Knowledge Graph</text>
+    
+    <g transform="translate(26, 292)">
+      <circle cx="10" cy="10" r="4" fill="#6366F1" />
+      <text x="24" y="14" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#312E81">Hosts &amp; Endpoints</text>
+
+      <circle cx="10" cy="36" r="4" fill="#E11D48" />
+      <text x="24" y="40" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#312E81">Identities &amp; Sessions</text>
+
+      <circle cx="10" cy="62" r="4" fill="#059669" />
+      <text x="24" y="66" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#312E81">Documents (OpenAPI/SDL)</text>
+
+      <circle cx="10" cy="88" r="4" fill="#D97706" />
+      <text x="24" y="92" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#312E81">Hypotheses &amp; Actions</text>
+
+      <circle cx="10" cy="114" r="4" fill="#0284C7" />
+      <text x="24" y="118" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#312E81">Candidate Findings</text>
+    </g>
+
+    <text x="26" y="450" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#4F46E5">Exportable to Neo4j via Cypher</text>
+  </g>
+
+  <!-- COLUMN 3: Planner & Check Execution (x=600) -->
+  <g transform="translate(600, 110)">
+    <rect width="270" height="490" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5" filter="url(#card-shadow)" />
+    <path d="M 0 12 Q 0 0 12 0 L 258 0 Q 270 0 270 12 L 270 38 L 0 38 Z" fill="#F8FAFC" />
+    <line x1="0" y1="38" x2="270" y2="38" stroke="#E2E8F0" stroke-width="1" />
+    <text x="16" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#334155">
+      3. PLANNER &amp; CHECKS
+    </text>
+
+    <!-- Dual Exploration Engine -->
+    <rect x="15" y="55" width="240" height="150" rx="8" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1" />
+    <text x="26" y="78" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#0F172A">Dual Exploration Planner</text>
+    
+    <rect x="25" y="90" width="220" height="44" rx="6" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" />
+    <text x="34" y="108" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#0F172A">Pass 1: Baseline Ordering</text>
+    <text x="34" y="124" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#64748B">Param-weighted interest heuristics</text>
+
+    <rect x="25" y="142" width="220" height="52" rx="6" fill="#FFF1F2" stroke="#FDA4AF" stroke-width="1" />
+    <text x="34" y="160" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#BE123C">Pass 2: Bounded MCTS / LLM</text>
+    <text x="34" y="176" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#4C0519">Monte Carlo Tree Search action choice</text>
+    <text x="34" y="188" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#9F1239">Never hallucinates new attack payloads</text>
+
+    <!-- Connective arrow inside col 3 -->
+    <path d="M 135 215 L 135 240" stroke="#94A3B8" stroke-width="1.5" marker-end="url(#arrow-gray)" />
+
+    <!-- Registered Deterministic Checks -->
+    <rect x="15" y="248" width="240" height="222" rx="8" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1" />
+    <text x="26" y="272" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#0F172A">Registered Checks</text>
+
+    <g transform="translate(26, 292)">
+      <text x="0" y="12" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#334155">💉 <tspan font-weight="600" fill="#BE123C">sqli</tspan>: SQL syntax &amp; error probes</text>
+      <text x="0" y="34" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#334155">⚡ <tspan font-weight="600" fill="#BE123C">xss</tspan>: Reflected context analysis</text>
+      <text x="0" y="56" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#334155">🔑 <tspan font-weight="600" fill="#BE123C">authz-object</tspan>: BOLA / IDOR diffing</text>
+      <text x="0" y="78" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#334155">🌐 <tspan font-weight="600" fill="#BE123C">cors</tspan>: Origin reflection &amp; creds</text>
+      <text x="0" y="100" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#334155">↗️ <tspan font-weight="600" fill="#BE123C">open-redirect</tspan>: Location target</text>
+      <text x="0" y="122" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#334155">🛡️ <tspan font-weight="600" fill="#BE123C">headers</tspan>: Missing security headers</text>
+      <text x="0" y="144" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#334155">📊 <tspan font-weight="600" fill="#BE123C">graphql</tspan>: Schema exposure checks</text>
+    </g>
+
+    <text x="26" y="458" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="600" fill="#D97706">Outputs: Candidate Findings</text>
+  </g>
+
+  <!-- COLUMN 4: Replay Verification & Output (x=905) -->
+  <g transform="translate(905, 110)">
+    <rect width="235" height="490" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5" filter="url(#card-shadow)" />
+    <path d="M 0 12 Q 0 0 12 0 L 223 0 Q 235 0 235 12 L 235 38 L 0 38 Z" fill="#F8FAFC" />
+    <line x1="0" y1="38" x2="235" y2="38" stroke="#E2E8F0" stroke-width="1" />
+    <text x="16" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#334155">
+      4. REPLAY GATE &amp; SARIF
+    </text>
+
+    <!-- Verification Gate Box -->
+    <rect x="15" y="55" width="205" height="150" rx="8" fill="#ECFDF5" stroke="#A7F3D0" stroke-width="1.3" />
+    <text x="24" y="78" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#047857">Replay Verification Gate</text>
+    <text x="24" y="98" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#065F46">Deterministic 2nd request.</text>
+    
+    <rect x="24" y="112" width="187" height="34" rx="5" fill="#D1FAE5" stroke="#6EE7B7" stroke-width="1" />
+    <text x="32" y="133" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#065F46">✓ Confirmed → VALIDATED</text>
+
+    <rect x="24" y="154" width="187" height="34" rx="5" fill="#FFE4E6" stroke="#FECDD3" stroke-width="1" />
+    <text x="32" y="175" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#9F1239">✗ Flaky / False → REJECTED</text>
+
+    <!-- Connective arrow inside col 4 -->
+    <path d="M 117 215 L 117 240" stroke="#94A3B8" stroke-width="1.5" marker-end="url(#arrow-gray)" />
+
+    <!-- Artifacts -->
+    <rect x="15" y="248" width="205" height="222" rx="8" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1" />
+    <text x="24" y="272" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#0F172A">Export Artifacts</text>
+
+    <g transform="translate(24, 290)">
+      <text x="0" y="14" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#0F172A">📄 report.md</text>
+      <text x="18" y="30" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#64748B">Human-readable summary</text>
+
+      <text x="0" y="52" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#0F172A">📊 findings.sarif</text>
+      <text x="18" y="68" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#64748B">GitHub Code Scanning</text>
+
+      <text x="0" y="90" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#0F172A">📋 findings.json</text>
+      <text x="18" y="106" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#64748B">Machine automation</text>
+
+      <text x="0" y="128" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#0F172A">🔒 audit.jsonl</text>
+      <text x="18" y="144" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#64748B">Redacted request audit</text>
+
+      <text x="0" y="166" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#0F172A">🕸️ graph.json / Neo4j</text>
+    </g>
+  </g>
+
+  <!-- Connective Arrows between columns -->
+  <path d="M 270 350 L 303 350" stroke="#E11D48" stroke-width="2" marker-end="url(#arrow-crimson-light)" />
+  <path d="M 565 350 L 598 350" stroke="#94A3B8" stroke-width="2" marker-end="url(#arrow-gray)" />
+  <path d="M 870 350 L 903 350" stroke="#059669" stroke-width="2" marker-end="url(#arrow-emerald-light)" />
+</svg>

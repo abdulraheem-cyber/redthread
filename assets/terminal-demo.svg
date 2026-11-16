@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 520" width="100%" height="100%">
+  <defs>
+    <filter id="term-shadow-light" x="-5%" y="-5%" width="110%" height="114%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#0F172A" flood-opacity="0.08" />
+    </filter>
+  </defs>
+
+  <!-- Outer Window Container (Light Mode) -->
+  <rect x="20" y="20" width="960" height="480" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5" filter="url(#term-shadow-light)" />
+
+  <!-- Window Header Bar -->
+  <path d="M 20 32 Q 20 20 32 20 L 968 20 Q 980 20 980 32 L 980 58 L 20 58 Z" fill="#F8FAFC" />
+  <line x1="20" y1="58" x2="980" y2="58" stroke="#E2E8F0" stroke-width="1" />
+
+  <!-- Window Control Dots -->
+  <circle cx="44" cy="39" r="6" fill="#F87171" stroke="#EF4444" stroke-width="0.5" />
+  <circle cx="64" cy="39" r="6" fill="#FBBF24" stroke="#F59E0B" stroke-width="0.5" />
+  <circle cx="84" cy="39" r="6" fill="#34D399" stroke="#10B981" stroke-width="0.5" />
+
+  <!-- Window Title -->
+  <text x="500" y="43" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="12" font-weight="500" fill="#64748B">
+    terminal — redthread run &amp; benchmark eval
+  </text>
+
+  <!-- Terminal Content Body -->
+  <g transform="translate(48, 90)" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="12.5" line-height="1.6">
+    <!-- Command Prompt 1 -->
+    <text x="0" y="0">
+      <tspan fill="#059669" font-weight="bold">➜</tspan>
+      <tspan fill="#0284C7" font-weight="bold"> redthread</tspan>
+      <tspan fill="#475569"> git:(</tspan><tspan fill="#BE123C" font-weight="bold">main</tspan><tspan fill="#475569">)</tspan>
+      <tspan fill="#0F172A" font-weight="600"> redthread run -c examples/redthread.toml</tspan>
+    </text>
+
+    <!-- Run Output -->
+    <text x="0" y="26" fill="#64748B">[+] Loaded configuration: examples/redthread.toml (target: http://127.0.0.1:8000)</text>
+    <text x="0" y="48" fill="#64748B">[+] Authenticated 2 identities: alice (form), bob (form)</text>
+    <text x="0" y="70" fill="#64748B">[+] Knowledge graph initialized: runs/2026-11-06_212117-labshop/graph.sqlite</text>
+    <text x="0" y="92" fill="#1E293B">run directory: <tspan fill="#0284C7">runs/2026-11-06_212117-labshop</tspan></text>
+    <text x="0" y="114" fill="#1E293B">validated: <tspan fill="#059669" font-weight="bold">8</tspan> (low 2, medium 3, high 3), rejected: <tspan fill="#64748B">0</tspan>, requests: <tspan fill="#0F172A" font-weight="600">86</tspan></text>
+
+    <!-- Finding Lines with Colored Badges -->
+    <text x="0" y="142">
+      <tspan fill="#94A3B8">  RT-001  </tspan>
+      <tspan fill="#BE123C" font-weight="bold">HIGH    </tspan>
+      <tspan fill="#0F172A" font-weight="600">authz-object         </tspan>
+      <tspan fill="#64748B">[101]   GET http://127.0.0.1:8000/api/orders/101</tspan>
+    </text>
+    <text x="0" y="164">
+      <tspan fill="#94A3B8">  RT-002  </tspan>
+      <tspan fill="#BE123C" font-weight="bold">HIGH    </tspan>
+      <tspan fill="#0F172A" font-weight="600">authz-object         </tspan>
+      <tspan fill="#64748B">[102]   GET http://127.0.0.1:8000/api/orders/102</tspan>
+    </text>
+    <text x="0" y="186">
+      <tspan fill="#94A3B8">  RT-003  </tspan>
+      <tspan fill="#BE123C" font-weight="bold">HIGH    </tspan>
+      <tspan fill="#0F172A" font-weight="600">sql-injection        </tspan>
+      <tspan fill="#64748B">[q]     GET http://127.0.0.1:8000/search?q=books</tspan>
+    </text>
+    <text x="0" y="208">
+      <tspan fill="#94A3B8">  RT-004  </tspan>
+      <tspan fill="#BE123C" font-weight="bold">HIGH    </tspan>
+      <tspan fill="#0F172A" font-weight="600">xss-reflected        </tspan>
+      <tspan fill="#64748B">[q]     GET http://127.0.0.1:8000/search?q=books</tspan>
+    </text>
+    <text x="0" y="230">
+      <tspan fill="#94A3B8">  RT-005  </tspan>
+      <tspan fill="#D97706" font-weight="bold">MEDIUM  </tspan>
+      <tspan fill="#0F172A" font-weight="600">open-redirect        </tspan>
+      <tspan fill="#64748B">[next]  GET http://127.0.0.1:8000/login?next=...</tspan>
+    </text>
+    <text x="0" y="252">
+      <tspan fill="#94A3B8">  RT-006  </tspan>
+      <tspan fill="#D97706" font-weight="bold">MEDIUM  </tspan>
+      <tspan fill="#0F172A" font-weight="600">cors                 </tspan>
+      <tspan fill="#64748B">[*]     GET http://127.0.0.1:8000/api/orders/101</tspan>
+    </text>
+    <text x="0" y="274">
+      <tspan fill="#94A3B8">  RT-007  </tspan>
+      <tspan fill="#0284C7" font-weight="bold">LOW     </tspan>
+      <tspan fill="#0F172A" font-weight="600">headers              </tspan>
+      <tspan fill="#64748B">[csp]   GET http://127.0.0.1:8000/</tspan>
+    </text>
+
+    <text x="0" y="302" fill="#334155">report: <tspan fill="#0284C7">runs/2026-11-06_212117-labshop/report.md</tspan></text>
+    <text x="0" y="322" fill="#334155">sarif:  <tspan fill="#0284C7">runs/2026-11-06_212117-labshop/findings.sarif</tspan></text>
+
+    <!-- Command Prompt 2 -->
+    <text x="0" y="358">
+      <tspan fill="#059669" font-weight="bold">➜</tspan>
+      <tspan fill="#0284C7" font-weight="bold"> redthread</tspan>
+      <tspan fill="#475569"> git:(</tspan><tspan fill="#BE123C" font-weight="bold">main</tspan><tspan fill="#475569">)</tspan>
+      <tspan fill="#0F172A" font-weight="600"> redthread eval --run runs/2026-11-06_212117-labshop --truth benchmarks/truth-labshop.json --strict</tspan>
+    </text>
+
+    <text x="0" y="384" fill="#059669" font-weight="bold">precision: 1.000 (8/8)  ·  recall: 1.000 (8/8)  ·  f1: 1.000</text>
+    <text x="0" y="404" fill="#64748B">missing: 0, unexpected: 0</text>
+    <text x="0" y="424" fill="#059669" font-weight="bold">✓ strict evaluation: PASS</text>
+  </g>
+</svg>
